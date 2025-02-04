@@ -1,17 +1,20 @@
-FROM node:23-alpine
+# Use Node 20.16 alpine as base image
+FROM node:20.16-alpine3.19 AS base
 
-RUN mkdir -p /home/node/app/horoscope && chown -R node:node /home/node/app
+# Change the working directory to /build
+WORKDIR /build
 
-WORKDIR /home/node/app
-
+# Copy the package.json and package-lock.json files to the /build directory
 COPY package*.json ./
 
-USER node
+# Install production dependencies and clean the cache
+RUN npm ci --omit=dev && npm cache clean --force
 
-RUN npm install
+# Copy the entire source code into the container
+COPY . .
 
-COPY --chown=node:node . .
+# Document the port that may need to be published
+EXPOSE 5000
 
-EXPOSE 8080
-
-CMD [ "node", "app.js" ]
+# Start the application
+CMD ["node", "app.js"]
