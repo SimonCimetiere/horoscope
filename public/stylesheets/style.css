@@ -1,6 +1,16 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(25, 41, 41);
+}
+
+div {
+  margin: auto;
+  padding: 16px;
+  width: 80vh;
+  border-radius: 30px;
+  background-color: rgb(255, 237, 214);
+  color: rgb(25, 41, 41);
 }
 
 a {

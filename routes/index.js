@@ -3,7 +3,7 @@ var router = express.Router();
 var horoscope = require('horoscope');
 
 var getSign = (day, month) => {
-  return horoscope.getSign({month: Number.parseInt(month), day: Number.parseInt(day)}, true)
+  return horoscope.getSign({month: Number.parseInt(month), day: Number.parseInt(day)})
 }
 
 /* GET home page. */

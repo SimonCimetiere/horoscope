@@ -12,4 +12,8 @@ describe('horoscope endpoint', () => {
     expect(res.status).toEqual(200);
     expect(res.res.text).toContain("Cancer");
   });
+  it('GET / with wrong numbers should fail', async () => {
+    const res = await requestWithSupertest.get('/?day=5&month=19');
+    expect(res.status).toEqual(500);
+  });
 });
