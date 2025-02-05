@@ -14,7 +14,7 @@ RUN npm ci --omit=dev && npm cache clean --force
 COPY . .
 
 # Document the port that may need to be published
-EXPOSE 5000
+EXPOSE 3000
 
 # Start the application
-CMD ["node", "app.js"]
+CMD ["node", "./bin/www"]

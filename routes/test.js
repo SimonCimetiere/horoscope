@@ -16,4 +16,9 @@ describe('horoscope endpoint', () => {
     const res = await requestWithSupertest.get('/?day=5&month=19');
     expect(res.status).toEqual(500);
   });
+  it('GET / with something else than number', async () => {
+    const res = await requestWithSupertest.get('/?day=5&month=eee');
+    expect(res.status).toEqual(500);
+    expect(res.res.text).toContain("Not a Number");
+  });
 });

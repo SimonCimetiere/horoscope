@@ -8,8 +8,14 @@ var getSign = (day, month) => {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var sign = getSign(req.query.day,req.query.month)
-  res.render('index', { sign: sign });
+  try{
+    const day = Number.parseInt(req.query.day)
+    const month = Number.parseInt(req.query.month)
+    var sign = getSign(day, month)
+    res.render('index', { sign: sign });
+  } catch(e) {
+    throw new Error("Not a Number");
+  }
 });
 
 module.exports = router;
